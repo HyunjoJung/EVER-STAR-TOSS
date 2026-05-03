@@ -3,10 +3,12 @@ import { StyleSheet, View } from 'react-native';
 import { createRoute } from '@granite-js/react-native';
 import { Button, Txt } from '@toss/tds-react-native';
 import { useQuery } from '@tanstack/react-query';
+import { BrandScene } from 'components/BrandScene';
 import { Card, Pill } from 'components/Card';
 import { EmptyState } from 'components/EmptyState';
 import { ErrorScreen, LoadingScreen, Screen } from 'components/Screen';
 import { APP_ROUTES } from 'config/routes';
+import { illustrations } from 'design/illustrations';
 import { colors, radius, spacing } from 'design/tokens';
 import { everStarApi } from 'lib/api';
 import { getQuestProgress } from 'lib/quest';
@@ -51,11 +53,13 @@ function HomePage() {
 
   if (selectedPet == null) {
     return (
-      <Screen title="EVER-STAR" subtitle="첫 기록을 시작할 반려동물을 등록해주세요.">
+      <Screen>
+        <BrandScene title="EVER-STAR" subtitle="첫 기록을 시작할 별을 등록해주세요." />
         <EmptyState
           title="아직 등록된 별이 없어요"
           description="반려동물 정보를 남기면 49일 기록과 편지를 시작할 수 있어요."
           actionLabel="등록하기"
+          illustration={illustrations.memorialBook}
           onAction={() => navigation.navigate(APP_ROUTES.petCreate)}
         />
       </Screen>
@@ -65,7 +69,8 @@ function HomePage() {
   const progress = getQuestProgress(selectedPet.questStartedAt);
 
   return (
-    <Screen title="EVER-STAR" subtitle={`${selectedPet.name}의 ${progress.day}일차 기록`}>
+    <Screen>
+      <BrandScene title="EVER-STAR" subtitle={`${selectedPet.name}의 ${progress.day}일차 기록을 영원별에 남겨요.`} />
       <Card
         title={selectedPet.name}
         description={`${selectedPet.species} · ${selectedPet.relationship}`}

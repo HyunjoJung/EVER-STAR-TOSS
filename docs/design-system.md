@@ -33,11 +33,19 @@ Original token mappings:
 
 Shared primitives live in `src/components`.
 
+- `BrandScene`: mobile hero scene using the generated sky garden asset
+- `ArtworkPanel`: illustrated feature panel for letter and memorial book surfaces
 - `Screen`: full-screen layout with scroll content, optional header, and fixed footer
 - `Card`: repeated content surface with title, description, optional right accessory, and press state
 - `Pill`: status chip for identity, quest type, and completion state
 - `FormField`: labeled input with consistent text color, border, radius, and multiline sizing
 - `EmptyState`: quiet empty/error-adjacent state for missing pets or records
+
+Generated illustration assets live in `assets/illustrations`.
+
+- `ever-star-sky-garden.png`: home hero background
+- `ever-star-letterbox.png`: letters and empty states
+- `ever-star-memorial-book.png`: memorial book and empty states
 
 Legacy component mappings:
 

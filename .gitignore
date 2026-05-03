@@ -18,3 +18,5 @@ yarn-error.log
 .swc
 .DS_Store
 coverage/
+.playwright-cli/
+output/

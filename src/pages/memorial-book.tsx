@@ -3,10 +3,12 @@ import { StyleSheet, View } from 'react-native';
 import { createRoute } from '@granite-js/react-native';
 import { Button, Txt } from '@toss/tds-react-native';
 import { useQuery } from '@tanstack/react-query';
+import { ArtworkPanel } from 'components/ArtworkPanel';
 import { Card, Pill } from 'components/Card';
 import { EmptyState } from 'components/EmptyState';
 import { ErrorScreen, LoadingScreen, Screen } from 'components/Screen';
 import { APP_ROUTES } from 'config/routes';
+import { illustrations } from 'design/illustrations';
 import { colors, lineHeights, radius, spacing } from 'design/tokens';
 import { everStarApi } from 'lib/api';
 import { queryKeys } from 'lib/queryKeys';
@@ -28,7 +30,7 @@ function MemorialBookPage() {
   if (selectedPetId == null) {
     return (
       <Screen title="메모리얼북">
-        <EmptyState title="선택된 별이 없어요" description="반려동물을 먼저 등록하거나 선택해주세요." actionLabel="별 선택" onAction={() => navigation.navigate(APP_ROUTES.pets)} />
+        <EmptyState title="선택된 별이 없어요" description="반려동물을 먼저 등록하거나 선택해주세요." actionLabel="별 선택" illustration={illustrations.memorialBook} onAction={() => navigation.navigate(APP_ROUTES.pets)} />
       </Screen>
     );
   }
@@ -57,6 +59,8 @@ function MemorialBookPage() {
         </Button>
       }
     >
+      <ArtworkPanel source={illustrations.memorialBook} title="메모리얼북" description="쌓인 마음을 한 권의 별책처럼 모아둬요." />
+
       <Card title={book.pet.name} description={book.pet.introduction ?? `${book.pet.species} · ${book.pet.relationship}`} right={<Pill tone={book.isActive ? 'success' : 'neutral'}>{book.isActive ? '활성' : '기록 중'}</Pill>} />
 
       <Card title="감정 요약" description={book.sentimentSummary.totalResult ?? '기록이 쌓이면 요약이 만들어져요.'}>
