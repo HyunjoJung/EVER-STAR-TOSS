@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Button, Txt } from '@toss/tds-react-native';
+import { colors, lineHeights, radius, spacing } from 'design/tokens';
 
 export function EmptyState({
   title,
@@ -15,10 +16,10 @@ export function EmptyState({
 }) {
   return (
     <View style={styles.container}>
-      <Txt typography="t5" fontWeight="bold" color="#191f28" textAlign="center">
+      <Txt typography="t5" fontWeight="bold" color={colors.textPrimary} textAlign="center">
         {title}
       </Txt>
-      <Txt typography="t7" color="#6b7684" textAlign="center" style={styles.description}>
+      <Txt typography="t7" color={colors.textSecondary} textAlign="center" style={styles.description}>
         {description}
       </Txt>
       {actionLabel != null && onAction != null ? (
@@ -32,13 +33,13 @@ export function EmptyState({
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: 12,
-    padding: 20,
-    gap: 12,
+    borderRadius: radius.sm,
+    padding: spacing.xl,
+    gap: spacing.md,
     alignItems: 'center',
-    backgroundColor: '#f9fafb',
+    backgroundColor: colors.surfaceMuted,
   },
   description: {
-    lineHeight: 20,
+    lineHeight: lineHeights.body,
   },
 });

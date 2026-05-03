@@ -1,6 +1,7 @@
 import React from 'react';
 import { ActivityIndicator, ScrollView, StyleSheet, View } from 'react-native';
 import { Button, Txt } from '@toss/tds-react-native';
+import { colors, layout, lineHeights, spacing } from 'design/tokens';
 
 export function Screen({
   title,
@@ -18,11 +19,11 @@ export function Screen({
       <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
         {title != null ? (
           <View style={styles.header}>
-            <Txt typography="t2" fontWeight="bold" color="#191f28">
+            <Txt typography="t2" fontWeight="bold" color={colors.textPrimary}>
               {title}
             </Txt>
             {subtitle != null ? (
-              <Txt typography="t6" color="#6b7684" style={styles.subtitle}>
+              <Txt typography="t6" color={colors.textSecondary} style={styles.subtitle}>
                 {subtitle}
               </Txt>
             ) : null}
@@ -39,7 +40,7 @@ export function LoadingScreen({ label = '불러오는 중' }: { label?: string }
   return (
     <View style={[styles.root, styles.center]}>
       <ActivityIndicator />
-      <Txt typography="t6" color="#6b7684" style={styles.loadingLabel}>
+      <Txt typography="t6" color={colors.textSecondary} style={styles.loadingLabel}>
         {label}
       </Txt>
     </View>
@@ -49,10 +50,10 @@ export function LoadingScreen({ label = '불러오는 중' }: { label?: string }
 export function ErrorScreen({ message, onRetry }: { message: string; onRetry?: () => void }) {
   return (
     <View style={[styles.root, styles.center]}>
-      <Txt typography="t4" fontWeight="bold" color="#191f28">
+      <Txt typography="t4" fontWeight="bold" color={colors.textPrimary}>
         문제가 생겼어요
       </Txt>
-      <Txt typography="t6" color="#6b7684" textAlign="center" style={styles.errorMessage}>
+      <Txt typography="t6" color={colors.textSecondary} textAlign="center" style={styles.errorMessage}>
         {message}
       </Txt>
       {onRetry != null ? (
@@ -67,37 +68,37 @@ export function ErrorScreen({ message, onRetry }: { message: string; onRetry?: (
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: colors.background,
   },
   content: {
-    padding: 20,
-    paddingBottom: 36,
-    gap: 16,
+    padding: layout.screenPadding,
+    paddingBottom: spacing.xxxl,
+    gap: spacing.lg,
   },
   header: {
-    paddingTop: 12,
-    paddingBottom: 8,
-    gap: 8,
+    paddingTop: spacing.md,
+    paddingBottom: spacing.sm,
+    gap: spacing.sm,
   },
   subtitle: {
-    lineHeight: 22,
+    lineHeight: lineHeights.body,
   },
   footer: {
-    padding: 20,
+    padding: layout.footerPadding,
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: '#e5e8eb',
-    backgroundColor: '#ffffff',
+    borderTopColor: colors.border,
+    backgroundColor: colors.background,
   },
   center: {
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 24,
+    padding: spacing.xxl,
   },
   loadingLabel: {
-    marginTop: 12,
+    marginTop: spacing.md,
   },
   errorMessage: {
-    marginVertical: 12,
-    lineHeight: 22,
+    marginVertical: spacing.md,
+    lineHeight: lineHeights.body,
   },
 });

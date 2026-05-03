@@ -8,6 +8,7 @@ import { EmptyState } from 'components/EmptyState';
 import { FormField } from 'components/FormField';
 import { ErrorScreen, LoadingScreen, Screen } from 'components/Screen';
 import { APP_ROUTES } from 'config/routes';
+import { colors, lineHeights, radius } from 'design/tokens';
 import { everStarApi } from 'lib/api';
 import { queryKeys } from 'lib/queryKeys';
 import { useAppSession } from 'providers/AppSessionProvider';
@@ -84,11 +85,11 @@ function QuestTodayPage() {
 
       {answered ? (
         <Card title="오늘의 기록" right={<Pill tone="success">완료</Pill>}>
-          <Txt typography="t6" color="#333d4b" style={styles.paragraph}>
+          <Txt typography="t6" color={colors.textBody} style={styles.paragraph}>
             {data.answer?.content}
           </Txt>
           {data.answer?.imageUrl != null ? <Image source={{ uri: data.answer.imageUrl }} style={styles.image} /> : null}
-          <Txt typography="t7" color="#6b7684">
+          <Txt typography="t7" color={colors.textSecondary}>
             {data.answer?.aiAnswer?.status === 'completed' ? 'AI 답장이 준비됐어요.' : 'AI 답장을 준비하고 있어요.'}
           </Txt>
         </Card>
@@ -116,12 +117,12 @@ function QuestTodayPage() {
 
 const styles = StyleSheet.create({
   paragraph: {
-    lineHeight: 24,
+    lineHeight: lineHeights.readable,
   },
   image: {
     width: '100%',
     aspectRatio: 1,
-    borderRadius: 12,
-    backgroundColor: '#f2f4f6',
+    borderRadius: radius.sm,
+    backgroundColor: colors.surfacePressed,
   },
 });

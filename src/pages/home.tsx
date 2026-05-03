@@ -7,6 +7,7 @@ import { Card, Pill } from 'components/Card';
 import { EmptyState } from 'components/EmptyState';
 import { ErrorScreen, LoadingScreen, Screen } from 'components/Screen';
 import { APP_ROUTES } from 'config/routes';
+import { colors, radius, spacing } from 'design/tokens';
 import { everStarApi } from 'lib/api';
 import { getQuestProgress } from 'lib/quest';
 import { queryKeys } from 'lib/queryKeys';
@@ -74,7 +75,7 @@ function HomePage() {
         <View style={styles.progressTrack}>
           <View style={[styles.progressFill, { width: `${Math.round(progress.ratio * 100)}%` }]} />
         </View>
-        <Txt typography="t7" color="#6b7684">
+        <Txt typography="t7" color={colors.textSecondary}>
           {progress.day} / {progress.total}일
         </Txt>
       </Card>
@@ -113,20 +114,20 @@ function HomePage() {
 const styles = StyleSheet.create({
   progressTrack: {
     height: 8,
-    borderRadius: 999,
-    backgroundColor: '#f2f4f6',
+    borderRadius: radius.pill,
+    backgroundColor: colors.surfacePressed,
     overflow: 'hidden',
   },
   progressFill: {
     height: 8,
-    borderRadius: 999,
-    backgroundColor: '#eb7f72',
+    borderRadius: radius.pill,
+    backgroundColor: colors.brand,
   },
   grid: {
-    gap: 12,
+    gap: spacing.md,
   },
   navRow: {
     flexDirection: 'row',
-    gap: 10,
+    gap: spacing.md,
   },
 });

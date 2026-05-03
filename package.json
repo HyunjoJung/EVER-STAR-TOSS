@@ -42,6 +42,17 @@
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.31.0"
   },
+  "overrides": {
+    "@fastify/middie": "^9.3.2",
+    "fastify": "^5.8.5",
+    "find-my-way": "^9.5.0",
+    "fast-xml-parser": "^5.7.2",
+    "ip": "^2.0.1",
+    "@react-native-community/cli": "11.4.1",
+    "@react-native-community/cli-doctor": "11.4.1",
+    "@react-native-community/cli-hermes": "11.4.1",
+    "@react-native-community/cli-platform-ios": "11.4.1"
+  },
   "dependenciesMeta": {
     "hermes-compiler": {
       "unplugged": true

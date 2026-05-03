@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, TextInput, View, type KeyboardTypeOptions } from 'react-native';
 import { Txt } from '@toss/tds-react-native';
+import { colors, radius, spacing } from 'design/tokens';
 
 export function FormField({
   label,
@@ -19,14 +20,14 @@ export function FormField({
 }) {
   return (
     <View style={styles.wrapper}>
-      <Txt typography="t7" fontWeight="bold" color="#4e5968">
+      <Txt typography="t7" fontWeight="bold" color={colors.textLabel}>
         {label}
       </Txt>
       <TextInput
         value={value}
         onChangeText={onChangeText}
         placeholder={placeholder}
-        placeholderTextColor="#8b95a1"
+        placeholderTextColor={colors.textTertiary}
         multiline={multiline}
         keyboardType={keyboardType}
         style={[styles.input, multiline && styles.textArea]}
@@ -37,18 +38,18 @@ export function FormField({
 
 const styles = StyleSheet.create({
   wrapper: {
-    gap: 8,
+    gap: spacing.sm,
   },
   input: {
     minHeight: 48,
-    borderRadius: 12,
+    borderRadius: radius.sm,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#d1d6db',
+    borderColor: colors.borderStrong,
     paddingHorizontal: 14,
-    paddingVertical: 12,
-    color: '#191f28',
+    paddingVertical: spacing.md,
+    color: colors.textPrimary,
     fontSize: 16,
-    backgroundColor: '#ffffff',
+    backgroundColor: colors.surface,
   },
   textArea: {
     minHeight: 132,

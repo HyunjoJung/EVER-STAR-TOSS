@@ -7,6 +7,7 @@ import { Card, Pill } from 'components/Card';
 import { EmptyState } from 'components/EmptyState';
 import { ErrorScreen, LoadingScreen, Screen } from 'components/Screen';
 import { APP_ROUTES } from 'config/routes';
+import { colors, lineHeights, radius, spacing } from 'design/tokens';
 import { everStarApi } from 'lib/api';
 import { queryKeys } from 'lib/queryKeys';
 import { useAppSession } from 'providers/AppSessionProvider';
@@ -62,10 +63,10 @@ function MemorialBookPage() {
         <View style={styles.weekGrid}>
           {[book.sentimentSummary.week1Result, book.sentimentSummary.week2Result, book.sentimentSummary.week3Result, book.sentimentSummary.week4Result, book.sentimentSummary.week5Result, book.sentimentSummary.week6Result, book.sentimentSummary.week7Result].map((score, index) => (
             <View key={index} style={styles.weekBox}>
-              <Txt typography="t7" color="#6b7684">
+              <Txt typography="t7" color={colors.textSecondary}>
                 {index + 1}주
               </Txt>
-              <Txt typography="t6" fontWeight="bold" color="#191f28">
+              <Txt typography="t6" fontWeight="bold" color={colors.textPrimary}>
                 {score ?? '-'}
               </Txt>
             </View>
@@ -75,16 +76,16 @@ function MemorialBookPage() {
 
       <Card title="퀘스트 기록" description={`${book.questAnswers.length}개 저장됨`}>
         {book.questAnswers.length === 0 ? (
-          <Txt typography="t7" color="#6b7684">
+          <Txt typography="t7" color={colors.textSecondary}>
             아직 저장된 퀘스트가 없어요.
           </Txt>
         ) : (
           book.questAnswers.slice(0, 6).map(answer => (
             <View key={answer.id} style={styles.recordRow}>
-              <Txt typography="t7" fontWeight="bold" color="#4e5968">
+              <Txt typography="t7" fontWeight="bold" color={colors.textLabel}>
                 {answer.questId}일차
               </Txt>
-              <Txt typography="t7" color="#333d4b" numberOfLines={2} style={styles.recordText}>
+              <Txt typography="t7" color={colors.textBody} numberOfLines={2} style={styles.recordText}>
                 {answer.content}
               </Txt>
             </View>
@@ -94,13 +95,13 @@ function MemorialBookPage() {
 
       <Card title="편지" description={`${book.letters.length}개 저장됨`}>
         {book.letters.length === 0 ? (
-          <Txt typography="t7" color="#6b7684">
+          <Txt typography="t7" color={colors.textSecondary}>
             아직 편지가 없어요.
           </Txt>
         ) : (
           book.letters.slice(0, 4).map(letter => (
             <View key={letter.id} style={styles.recordRow}>
-              <Txt typography="t7" color="#333d4b" numberOfLines={2} style={styles.recordText}>
+              <Txt typography="t7" color={colors.textBody} numberOfLines={2} style={styles.recordText}>
                 {letter.content}
               </Txt>
             </View>
@@ -115,22 +116,22 @@ const styles = StyleSheet.create({
   weekGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 8,
+    gap: spacing.sm,
   },
   weekBox: {
     width: 72,
-    borderRadius: 10,
-    padding: 10,
-    backgroundColor: '#f9fafb',
-    gap: 4,
+    borderRadius: radius.sm,
+    padding: spacing.md,
+    backgroundColor: colors.surfaceMuted,
+    gap: spacing.xs,
   },
   recordRow: {
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: '#e5e8eb',
-    paddingTop: 10,
-    gap: 4,
+    borderTopColor: colors.border,
+    paddingTop: spacing.md,
+    gap: spacing.xs,
   },
   recordText: {
-    lineHeight: 20,
+    lineHeight: lineHeights.body,
   },
 });

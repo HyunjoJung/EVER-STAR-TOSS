@@ -1,6 +1,7 @@
 import React from 'react';
 import { Pressable, StyleSheet, View, type ViewStyle } from 'react-native';
 import { Txt } from '@toss/tds-react-native';
+import { colors, layout, lineHeights, radius, spacing } from 'design/tokens';
 
 export function Card({
   title,
@@ -23,12 +24,12 @@ export function Card({
         <View style={styles.header}>
           <View style={styles.headerText}>
             {title != null ? (
-              <Txt typography="t5" fontWeight="bold" color="#191f28">
+              <Txt typography="t5" fontWeight="bold" color={colors.textPrimary}>
                 {title}
               </Txt>
             ) : null}
             {description != null ? (
-              <Txt typography="t7" color="#6b7684" style={styles.description}>
+              <Txt typography="t7" color={colors.textSecondary} style={styles.description}>
                 {description}
               </Txt>
             ) : null}
@@ -54,7 +55,7 @@ export function Card({
 export function Pill({ children, tone = 'neutral' }: { children: React.ReactNode; tone?: 'neutral' | 'brand' | 'success' }) {
   return (
     <View style={[styles.pill, tone === 'brand' && styles.brandPill, tone === 'success' && styles.successPill]}>
-      <Txt typography="t7" fontWeight="bold" color={tone === 'neutral' ? '#4e5968' : '#ffffff'}>
+      <Txt typography="t7" fontWeight="bold" color={tone === 'neutral' ? colors.textLabel : colors.white}>
         {children}
       </Txt>
     </View>
@@ -63,39 +64,39 @@ export function Pill({ children, tone = 'neutral' }: { children: React.ReactNode
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: 12,
-    padding: 16,
+    borderRadius: radius.sm,
+    padding: spacing.lg,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#e5e8eb',
-    backgroundColor: '#ffffff',
-    gap: 12,
+    borderColor: colors.border,
+    backgroundColor: colors.surface,
+    gap: layout.cardGap,
   },
   header: {
     alignItems: 'flex-start',
     flexDirection: 'row',
-    gap: 12,
+    gap: spacing.md,
   },
   headerText: {
     flex: 1,
-    gap: 4,
+    gap: spacing.xs,
   },
   description: {
-    lineHeight: 19,
+    lineHeight: lineHeights.caption,
   },
   pressed: {
     opacity: 0.72,
   },
   pill: {
     alignSelf: 'flex-start',
-    borderRadius: 999,
+    borderRadius: radius.pill,
     paddingHorizontal: 10,
     paddingVertical: 5,
-    backgroundColor: '#f2f4f6',
+    backgroundColor: colors.surfacePressed,
   },
   brandPill: {
-    backgroundColor: '#eb7f72',
+    backgroundColor: colors.brand,
   },
   successPill: {
-    backgroundColor: '#20a05a',
+    backgroundColor: colors.success,
   },
 });

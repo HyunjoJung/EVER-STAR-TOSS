@@ -60,5 +60,6 @@ supabase functions deploy process-ai-jobs get-memorial-book dispatch-notificatio
 ## 문서
 
 - `docs/architecture.md`: 앱/백엔드/AI/알림 구조
+- `docs/design-system.md`: TDS 기반 앱 전용 디자인 토큰과 컴포넌트 원칙
 - `docs/app-in-toss-checklist.md`: 앱인토스 검수 전 체크리스트
 - `docs/supabase-edge-functions.md`: Edge Function 계약과 운영 메모

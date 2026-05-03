@@ -6,6 +6,7 @@ import { z } from 'zod';
 import { Card, Pill } from 'components/Card';
 import { ErrorScreen, LoadingScreen, Screen } from 'components/Screen';
 import { APP_ROUTES } from 'config/routes';
+import { colors, lineHeights } from 'design/tokens';
 import { everStarApi } from 'lib/api';
 import { queryKeys } from 'lib/queryKeys';
 import { useAppSession } from 'providers/AppSessionProvider';
@@ -54,7 +55,7 @@ function LetterDetailPage() {
       }
     >
       <Card title="보낸 편지">
-        <Txt typography="t6" color="#333d4b" style={{ lineHeight: 24 }}>
+        <Txt typography="t6" color={colors.textBody} style={styles.readableText}>
           {letter.content}
         </Txt>
       </Card>
@@ -63,10 +64,16 @@ function LetterDetailPage() {
         title="AI 답장"
         right={<Pill tone={letter.aiAnswer?.status === 'completed' ? 'success' : 'neutral'}>{letter.aiAnswer?.status ?? 'pending'}</Pill>}
       >
-        <Txt typography="t6" color="#333d4b" style={{ lineHeight: 24 }}>
+        <Txt typography="t6" color={colors.textBody} style={styles.readableText}>
           {letter.aiAnswer?.content ?? '답장을 준비하고 있어요.'}
         </Txt>
       </Card>
     </Screen>
   );
 }
+
+const styles = {
+  readableText: {
+    lineHeight: lineHeights.readable,
+  },
+};
