@@ -1,0 +1,24 @@
+project_id = "ever-star-toss"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "storage"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+major_version = 15
+
+[storage]
+enabled = true
+
+[auth]
+enabled = true
+
+[functions.process-ai-jobs]
+verify_jwt = false
+
+[functions.dispatch-notifications]
+verify_jwt = false
