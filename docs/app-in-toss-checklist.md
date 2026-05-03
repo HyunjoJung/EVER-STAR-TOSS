@@ -15,7 +15,7 @@
 - Primary logo is `assets/brand/ever-star-logo-600.png`.
 - Logo is 600x600 PNG.
 - Logo has a white background and no alpha channel.
-- UI uses mostly white surfaces, gray text, and restrained brand accents from `src/design/tokens.ts`.
+- UI uses mostly white surfaces, gray text, and original EVER-STAR brand accents mapped in `src/design/tokens.ts`.
 - Text-heavy screens avoid hero/marketing composition and keep actions close to the workflow.
 
 ## Sandbox QA
